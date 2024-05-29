@@ -20,6 +20,11 @@
     --Dark-Desaturated-Blue: hsl(228, 28%, 20%);
     --Desaturated-Blue: hsl(228, 34%, 66%);
     --White: hsl(0, 0%, 100%);
+    --Light-Grayish-Blue: hsl(227, 47%, 96%);
+    --Very-Pale-Blue : hsl(225, 100%, 98%);
+    --Light-Grayish-Blue: hsl(227, 47%, 96%);
+    --Dark-Grayish-Blue: hsl(228, 12%, 44%);
+    --Very-Dark-Blue: hsl(230, 17%, 14%);
 
 
 }
@@ -34,7 +39,9 @@ body {
     font-family: "Inter", sans-serif;
 }
 
-
+body.active{
+    background: var(--White);
+}
 body::before {
     content: "";
     position: absolute;
@@ -42,8 +49,9 @@ body::before {
     left: 0;
     width: 100%;
     height: 30vh;
-    background-color: var(--Very-Dark-Blue-top);
-    border-radius:20px 20px; /* Alt kısma border-radius ekle */
+    background: var(--Very-Dark-Blue-top);
+    border-bottom-left-radius: .5rem;
+	border-bottom-right-radius: .5rem;
     z-index: -1; /* İçeriğin ön planda kalması için */
 }
 
@@ -59,6 +67,7 @@ header .title h1{
     font-weight: 700;
     color: var(--White);
 }
+
 header .title p{
     color: var(--Desaturated-Blue);
     font-weight: 400;
@@ -93,6 +102,17 @@ header .theme-switcher {
     transform: scale(0.9);
     padding: 10px;
 }
+
+#theme-toggle.active {
+    background: var(--Toggle-1);
+    transition: 0.5s;
+    box-shadow: inset 9px 6px 50px var(--Toggle-1) ; /* Adding white box-shadow */
+}
+
+.toggle-circle.active {
+    background: var;
+}
+
 main {
     display: grid;
     grid-template-rows: repeat(2, 0.90fr);
@@ -121,6 +141,7 @@ main {
     border-top-left-radius: .5rem;
 	border-top-right-radius: .5rem;
 }
+
 .dashboard .card:hover{
     background-color: var(--Desaturated-Blue);
 }
@@ -132,7 +153,7 @@ main {
     flex-direction: column;
 }
 .dashboard-secand .card {
-    width: 290px;
+    width: auto;
     height: 130px;
     background-color: var(--Dark-Desaturated-Blue);
     text-align: center;
@@ -143,7 +164,10 @@ main {
     justify-items: stretch;
     align-items: baseline;
     gap: 20px;
-
+    cursor: pointer;
+}
+.dashboard-secand .card:hover{
+    background-color: var(--Desaturated-Blue);
 }
 .dashboard #card-1{
     border-top: .4rem solid var(--Facebook);
@@ -348,29 +372,110 @@ main {
     left: 55px;
     bottom: 31px;
 }
-
+hr {
+    display:none
+    ;
+}
 @media (max-width: 375px) {
+    body{
+        background-image: url(./design);
+    }
     header {
         flex-direction: column;
         align-items: flex-start;
+        /* font-size: 19px; */
     }
+    header h1 {
+        font-size: 20px;
+    }
+    header p {
+        font-size: 15px;
+        font-weight: 700;
+    }
+    hr {
+        display: block;
+        width: 100%;
+        border: none;
+        height: 0.9px;
+        background-color: var(--Dark-Desaturated-Blue);
+        margin: 10px 0px 10px;
+    }
+
     header .theme-switcher {
-        margin-top: 10px;
+        margin: 0px 0 10px;
+        display: flex;
+        gap: 100px;
+    
     }
     main {
-        grid-template-rows: repeat(4, auto);
+        display: block;
     }
     .dashboard, .dashboard-secand {
         flex-direction: column;
         gap: 20px;
     }
     .dashboard .card, .dashboard-secand .card {
-        width: 100%;
+        /* width: 100%; */
+        width: 280px;    
     }
     .dashboard {
         height: auto;
     }
     .dashboard-secand {
         height: auto;
+        display: flex;
+        flex-direction: row;
+        width: 281px;
+        margin-left: -17px;
+    
     }
+    .info .second-part  {
+        margin-top: 45px;
+        /* width: fit-content; */
+        font-size: 12px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+
+body.active {
+    background: var(--Active-Background);
+}
+body.active::before {
+    background: var(--Very-Pale-Blue);
+}
+header.active {
+    color: var(--Active-Text);
+}
+.active .title h1 {
+    color: var(--Very-Dark-Blue);
+}
+.active .second-part h1{
+    color: var(--Desaturated-Blue);
+}
+header.active .title p {
+    color: var(--Active-Text);
+}
+#theme-toggle.active {
+    background: var(--Active-Toggle);
+}
+#theme-toggle.active .toggle-circle {
+    left: 34px;
+    background:var(--Very-Pale-Blue);
+}
+body.active .dashboard .card {
+    background-color: var(--Light-Grayish-Blue);
+}
+body.active .dashboard .card p {
+    color: var(--Active-Text);
+}
+body.active .dashboard-secand .card {
+    background: var(--Light-Grayish-Blue);
+}
+body.active .dashboard-secand .card .info-dowun h2 {
+    color: var(--Dark-Grayish-Blue);
+}
+body.active .dashboard-secand .card p {
+    color: var(--Very-Dark-Blue);
 }
